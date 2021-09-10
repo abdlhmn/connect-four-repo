@@ -1,0 +1,2 @@
+# CONNECT FOUR
+This is a text based python connect four program. Each column is represented by the letter above it. The column's corresponding letter must be typed in to insert the counter inside it. The person who connects four contiguous counters that have the same colour wins. 
