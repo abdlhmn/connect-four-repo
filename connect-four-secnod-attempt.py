@@ -64,7 +64,6 @@ class Board:
         # y = mx + c
         def bad_func(other, coords, is_pos, m):
             if m == 'undefined':
-                # print('undefined')
                 contiguous = 1
                 scan_y = coords[1] + is_pos
                 while scan_y not in (8, -1) and isinstance(self.board[scan_y][coords[0]], Players):
@@ -83,7 +82,6 @@ class Board:
                 if self.board[check_coords[1]][check_coords[0]].side == other.side:
                     contiguous += 1
                 else:
-                    # print('THIS RAN', contiguous)
                     break
                 if contiguous == 4:
                     print(contiguous)
@@ -142,6 +140,3 @@ while True:
         print('IT\'S A DRAW')
         break
 board.display()
-# ○
-# ●
-# board.making_moves(white, coords)
