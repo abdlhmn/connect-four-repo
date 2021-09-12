@@ -111,32 +111,39 @@ board = Board()
 white = Players('white', '●')
 black = Players('black', '○')
 turn = 0
-while True:
-    turn += 1
+try:
+    while True:
+        print('\n' * 100)
+        print('THis has not crashed yet.')
+        turn += 1
+        board.display()
+        output = 'Black' if turn % 2 else 'White'
+        try:
+            print(output, 'to move.')
+            move = ord(input('Input the columna at which you\'d like to put the counter. '))-65
+            while not board.validating_syntax(move):
+                move = ord(input('Inavlid move. '))-65
+        except TypeError:
+            print('Invalid move.')
+            continue
+        coords = board.finding_coords(move)
+        # print(coords)
+        if turn % 2 == 0:
+            output = 'WHITE'
+            board.making_moves(white, coords)
+            status = board.has_won(white, coords)
+        else:
+            output = 'BLACK'
+            board.making_moves(black, coords)
+            status = board.has_won(black, coords)
+        if status:
+            print(output, 'HAS WON')
+            break
+        if board.is_full():
+            print('IT\'S A DRAW')
+            break
     board.display()
-    output = 'Black' if turn % 2 else 'White'
-    try:
-        print(output, 'to move.')
-        move = ord(input('Input the columna at which you\'d like to put the counter. '))-65
-        while not board.validating_syntax(move):
-            move = ord(input('Inavlid move. '))-65
-    except TypeError:
-        print('Invalid move.')
-        continue
-    coords = board.finding_coords(move)
-    # print(coords)
-    if turn % 2 == 0:
-        output = 'WHITE'
-        board.making_moves(white, coords)
-        status = board.has_won(white, coords)
-    else:
-        output = 'BLACK'
-        board.making_moves(black, coords)
-        status = board.has_won(black, coords)
-    if status:
-        print(output, 'HAS WON')
-        break
-    if board.is_full():
-        print('IT\'S A DRAW')
-        break
-board.display()
+
+except:
+    print('It crashed again :)')
+    
